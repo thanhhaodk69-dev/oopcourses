@@ -11,7 +11,7 @@ string MAGENTA = "\033[35m"; // Màu hồng tím nhấn mạnh thông điệp cu
 
 // 1. Phần tiêu đề (Format thanh lịch)
 cout << BLUE << "-------------------------------------------\n" << RESET;
-cout << BLUE << "  ✨  DEVELOPER PROFILE: HIEUNHAN  ✨  \n" << RESET;
+cout << BLUE << "  ✨  DEVELOPER PROFILE: THANHHAO  ✨  \n" << RESET;
 cout << BLUE << "-------------------------------------------\n" << RESET;
 
 // 2. Phần thông tin học vấn (Sử dụng tab \t để căn lề thẳng hàng)

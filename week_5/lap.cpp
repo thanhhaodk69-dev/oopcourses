@@ -100,5 +100,37 @@ int main() {
         }
     }
     cout << "Students in range: " << rangeCount << "\n";
+
+    double totalScore = 0;
+    for (int i = 0; i < n; i++) {
+        totalScore += scores[i];
+    }
+    double avgScore = totalScore / n;
+
+    cout << "\n ABOVE AVERAGE \n";
+    cout << "Average score: " << avgScore << "\n";
+    cout << "Students above average:\n";
+    for (int i = 0; i < n; i++) {
+        if (scores[i] > avgScore) {
+            cout << "Student " << (i + 1) << ": " << scores[i] << "\n";
+        }
+    }
+
+    double secondMax = -1;
+    for (int i = 0; i < n; i++) {
+        if (scores[i] < maxScore) {
+            if (secondMax == -1 || scores[i] > secondMax) {
+                secondMax = scores[i];
+            }
+        }
+    }
+
+    cout << "\n SECOND HIGHEST SCORE \n";
+    cout << "Highest score: " << maxScore << "\n";
+    if (secondMax != -1) {
+        cout << "Second highest score: " << secondMax << "\n";
+    } else {
+        cout << "All students have the same score.\n";
+    }
     return 0;
 }

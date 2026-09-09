@@ -164,5 +164,12 @@ int main() {
     } else {
         cout << "All students pass!\n";
     }
+    // So sánh học sinh liền kề
+    cout << "\n COMPARE ADJACENT STUDENTS \n";
+    for (int i = 0; i < n - 1; i++) {
+        if (scores[i + 1] > scores[i]) {
+            cout << "Student " << (i + 2) << " improved compared to Student " << (i + 1) << "\n";
+        }
+    }
     return 0;
 }

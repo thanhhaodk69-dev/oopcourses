@@ -12,7 +12,7 @@ int main() {
             cout << "Invalid number of students!\nPlease enter a number from 2 to 20.\n";
         }
     } while (n < 2 || n > 20);
-    
+
     double scores[20];
 
     for (int i = 0; i < n; i++) {
@@ -24,5 +24,17 @@ int main() {
             }
         } while (scores[i] < 0 || scores[i] > 10);
     }
+
+    cout << "\n STUDENT SCORES \n";
+    for (int i = 0; i < n; i++) {
+        cout << "Student " << (i + 1) << ": " << scores[i] << "\n";
+    }
+
+    cout << "\n RESULTS \n";
+    for (int i = 0; i < n; i++) {
+        cout << "Student " << (i + 1) << ": " << scores[i] 
+             << " -> " << (scores[i] >= 5.0 ? "PASS" : "FAIL") << "\n";
+    }
+
     return 0;
 }

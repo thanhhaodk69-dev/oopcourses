@@ -76,5 +76,15 @@ int main() {
             cout << "Fail\n";
         }
     }
+
+    int excellentCount = 0;
+    for (int i = 0; i < n; i++) {
+        if (scores[i] >= 9.0) {
+            excellentCount++;
+        }
+    }
+    cout << "\n EXCELLENT STUDENTS \n";
+    cout << "Number of excellent students: " << excellentCount << "\n";
+
     return 0;
 }

@@ -171,5 +171,21 @@ int main() {
             cout << "Student " << (i + 2) << " improved compared to Student " << (i + 1) << "\n";
         }
     }
+    // Chuỗi đậu liên tiếp dài nhất
+    cout << "\n LONGEST PASS STREAK \n";
+    int maxStreak = 0;
+    int currentStreak = 0;
+
+    for (int i = 0; i < n; i++) {
+        if (scores[i] >= 5.0) {
+            currentStreak++;
+            if (currentStreak > maxStreak) {
+                maxStreak = currentStreak;
+            }
+        } else {
+            currentStreak = 0;
+        }
+    }
+    cout << "Longest pass streak: " << maxStreak << " students\n";
     return 0;
 }

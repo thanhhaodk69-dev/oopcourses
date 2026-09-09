@@ -76,7 +76,7 @@ int main() {
             cout << "Fail\n";
         }
     }
-
+//Đếm học sinh giỏi >= 9.0
     int excellentCount = 0;
     for (int i = 0; i < n; i++) {
         if (scores[i] >= 9.0) {
@@ -85,7 +85,7 @@ int main() {
     }
     cout << "\n EXCELLENT STUDENTS \n";
     cout << "Number of excellent students: " << excellentCount << "\n";
-
+//đếm học sinh trong khoảng [a, b]
     double minR, maxR;
     cout << "\n SCORE RANGE \n";
     cout << "Enter minimum score: ";
@@ -100,7 +100,7 @@ int main() {
         }
     }
     cout << "Students in range: " << rangeCount << "\n";
-
+//Học sinh trên trung bình lớp
     double totalScore = 0;
     for (int i = 0; i < n; i++) {
         totalScore += scores[i];
@@ -115,7 +115,7 @@ int main() {
             cout << "Student " << (i + 1) << ": " << scores[i] << "\n";
         }
     }
-
+//Điểm cao thứ 2
     double secondMax = -1;
     for (int i = 0; i < n; i++) {
         if (scores[i] < maxScore) {
@@ -131,6 +131,23 @@ int main() {
         cout << "Second highest score: " << secondMax << "\n";
     } else {
         cout << "All students have the same score.\n";
+    }
+    // Tìm vị trí các học sinh đạt điểm X
+    double searchScore;
+    cout << "\n===== SEARCH SCORE =====\n";
+    cout << "Enter score to search: ";
+    cin >> searchScore;
+
+    cout << "Found at:\n";
+    bool foundAny = false;
+    for (int i = 0; i < n; i++) {
+        if (scores[i] == searchScore) {
+            cout << "Student " << (i + 1) << "\n";
+            foundAny = true;
+        }
+    }
+    if (!foundAny) {
+        cout << "No student found with score " << searchScore << "\n";
     }
     return 0;
 }

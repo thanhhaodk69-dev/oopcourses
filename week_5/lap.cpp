@@ -86,5 +86,19 @@ int main() {
     cout << "\n EXCELLENT STUDENTS \n";
     cout << "Number of excellent students: " << excellentCount << "\n";
 
+    double minR, maxR;
+    cout << "\n SCORE RANGE \n";
+    cout << "Enter minimum score: ";
+    cin >> minR;
+    cout << "Enter maximum score: ";
+    cin >> maxR;
+
+    int rangeCount = 0;
+    for (int i = 0; i < n; i++) {
+        if (scores[i] >= minR && scores[i] <= maxR) {
+            rangeCount++;
+        }
+    }
+    cout << "Students in range: " << rangeCount << "\n";
     return 0;
 }

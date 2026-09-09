@@ -36,5 +36,29 @@ int main() {
              << " -> " << (scores[i] >= 5.0 ? "PASS" : "FAIL") << "\n";
     }
 
+    int passedCount = 0;
+    for (int i = 0; i < n; i++) {
+        if (scores[i] >= 5.0) {
+            passedCount++;
+        }
+    }
+    int failedCount = n - passedCount;
+    int passRate = (passedCount * 100) / n;
+
+    cout << "\n STATISTICS \n";
+    cout << "Passed   : " << passedCount << " students\n";
+    cout << "Failed   : " << failedCount << " students\n";
+    cout << "Pass rate: " << passRate << "%\n";
+
+    double maxScore = scores[0];
+    double minScore = scores[0];
+
+    for (int i = 1; i < n; i++) {
+        if (scores[i] > maxScore) maxScore = scores[i];
+        if (scores[i] < minScore) minScore = scores[i];
+    }
+
+    cout << "\nHighest score: " << maxScore << "\n";
+    cout << "Lowest score : " << minScore << "\n";
     return 0;
 }

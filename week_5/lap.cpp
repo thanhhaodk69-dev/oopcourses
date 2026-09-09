@@ -134,7 +134,7 @@ int main() {
     }
     // Tìm vị trí các học sinh đạt điểm X
     double searchScore;
-    cout << "\n===== SEARCH SCORE =====\n";
+    cout << "\n SEARCH SCORE \n";
     cout << "Enter score to search: ";
     cin >> searchScore;
 
@@ -148,6 +148,21 @@ int main() {
     }
     if (!foundAny) {
         cout << "No student found with score " << searchScore << "\n";
+    }
+    // Học sinh trượt đầu tiên
+    cout << "\n FIRST FAILING STUDENT \n";
+    int failIdx = -1;
+    for (int i = 0; i < n; i++) {
+        if (scores[i] < 5.0) {
+            failIdx = i;
+            break;
+        }
+    }
+
+    if (failIdx != -1) {
+        cout << "First failing student: Student " << (failIdx + 1) << ": " << scores[failIdx] << "\n";
+    } else {
+        cout << "All students pass!\n";
     }
     return 0;
 }

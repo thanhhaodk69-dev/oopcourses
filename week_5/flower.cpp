@@ -67,6 +67,22 @@ int main() {
              << setw(8) << flowers[i].quantity
              << setw(12) << flowers[i].type << "\n";
     }
+    // 3. find the most expensive flower and the cheapest flower
+    int maxIdx = 0;
+    int minIdx = 0;
+
+    for (int i = 1; i < n; i++) {
+        if (flowers[i].price > flowers[maxIdx].price) {
+            maxIdx = i;
+        }
+        if (flowers[i].price < flowers[minIdx].price) {
+            minIdx = i;
+        }
+    }
+
+    cout << "\n--- ANALYSIS ---\n";
+    cout << "Most expensive flower : " << flowers[maxIdx].name << " (" << fixed << setprecision(1) << flowers[maxIdx].price << ")\n";
+    cout << "Cheapest flower       : " << flowers[minIdx].name << " (" << fixed << setprecision(1) << flowers[minIdx].price << ")\n";
 
     return 0;
 }

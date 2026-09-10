@@ -70,6 +70,8 @@ int main() {
     // 3. find the most expensive flower and the cheapest flower
     int maxIdx = 0;
     int minIdx = 0;
+    int totalQty = 0;
+    double totalPrice = 0;
 
     for (int i = 1; i < n; i++) {
         if (flowers[i].price > flowers[maxIdx].price) {
@@ -78,11 +80,16 @@ int main() {
         if (flowers[i].price < flowers[minIdx].price) {
             minIdx = i;
         }
+        totalQty += flowers[i].quantity;
+        totalPrice += flowers[i].price;
     }
 
     cout << "\n--- ANALYSIS ---\n";
     cout << "Most expensive flower : " << flowers[maxIdx].name << " (" << fixed << setprecision(1) << flowers[maxIdx].price << ")\n";
     cout << "Cheapest flower       : " << flowers[minIdx].name << " (" << fixed << setprecision(1) << flowers[minIdx].price << ")\n";
+    cout << "Total quantity        : " << totalQty << "\n";
+    cout << "Total price           : " << fixed << setprecision(1) << totalPrice << "\n";
+
     // 4. Count how many flowers belong to each type
     cout << "\n--- COUNT BY TYPE ---\n";
     bool counted[MAX_FLOWERS] = {false};
@@ -99,6 +106,29 @@ int main() {
             cout << left << setw(12) << flowers[i].type << ": " << typeCount << "\n";
         }
     }
+    // 5. Search for a flower by name
+    string searchName;
+    cout << "\nEnter flower name to search: ";
+    cin >> searchName;
+
+    bool found = false;
+    for (int i = 0; i < n; i++) {
+        if (flowers[i].name == searchName) {
+            if (!found) {
+                cout << "\nFound!\n";
+                found = true;
+            }
+            cout << "Price: " << fixed << setprecision(1) << flowers[i].price << "\n";
+            cout << "Quantity: " << flowers[i].quantity << "\n";
+            cout << "Type: " << flowers[i].type << "\n";
+            break; 
+        }
+    }
+
+    if (!found) {
+        cout << "Flower not found in shop!\n";
+    }
+
 
     return 0;
 }

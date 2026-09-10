@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <iomanip>
 
 using namespace std;
 
@@ -49,6 +50,22 @@ int main() {
 
         cout << "  Type: ";
         cin >> flowers[i].type;
+    }
+    // 2. display the list of flowers
+    cout << "\n FLOWER SHOP \n";
+    cout << left << setw(4) << "No" 
+         << setw(12) << "Name" 
+         << setw(10) << "Price" 
+         << setw(8) << "Qty" 
+         << setw(12) << "Type" << "\n";
+    cout << "---------------------------------------\n";
+
+    for (int i = 0; i < n; i++) {
+        cout << left << setw(4) << (i + 1)
+             << setw(12) << flowers[i].name
+             << setw(10) << fixed << setprecision(1) << flowers[i].price
+             << setw(8) << flowers[i].quantity
+             << setw(12) << flowers[i].type << "\n";
     }
 
     return 0;

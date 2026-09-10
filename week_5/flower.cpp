@@ -83,6 +83,22 @@ int main() {
     cout << "\n--- ANALYSIS ---\n";
     cout << "Most expensive flower : " << flowers[maxIdx].name << " (" << fixed << setprecision(1) << flowers[maxIdx].price << ")\n";
     cout << "Cheapest flower       : " << flowers[minIdx].name << " (" << fixed << setprecision(1) << flowers[minIdx].price << ")\n";
+    // 4. Count how many flowers belong to each type
+    cout << "\n--- COUNT BY TYPE ---\n";
+    bool counted[MAX_FLOWERS] = {false};
+
+    for (int i = 0; i < n; i++) {
+        if (!counted[i]) {
+            int typeCount = 0;
+            for (int j = i; j < n; j++) {
+                if (flowers[j].type == flowers[i].type) {
+                    typeCount++;
+                    counted[j] = true; 
+                }
+            }
+            cout << left << setw(12) << flowers[i].type << ": " << typeCount << "\n";
+        }
+    }
 
     return 0;
 }

@@ -1,17 +1,19 @@
 #include <iostream>
-#include <string>
 using namespace std;
 
-void showScore(string name, double score) {
-    cout << "Student: " << name << endl;
-    cout << "Score  : " << score << endl;
-    cout << "Keep going!" << endl;
+int maxValue(int a, int b) {
+    if (a > b) {
+        return a;
+    } else {
+        return b;
+    }
 }
 
 int main() {
-    string name = "Dinh Thanh Hao";
-    double score = 3.6;
-    showScore(name, score);
+    int x = 15;
+    int y = 20;
+    int maxNum = maxValue(x, y);
+    cout << "Maximum value: " << maxNum << endl;
 
     return 0;
 }

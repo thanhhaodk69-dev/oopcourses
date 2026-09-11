@@ -1,16 +1,14 @@
 #include <iostream>
 using namespace std;
 
-void showMenu() {
-    cout << "===== MENU =====" << endl;
-    cout << "1. Display students" << endl;
-    cout << "2. Show statistics" << endl;
-    cout << "3. Exit" << endl;
-    cout << "=================" << endl;
+void showStudentID(int id) {
+    cout << "Student ID: " << id << endl;
 }
 
 int main() {
-    showMenu();
+    int id = 2112001;
+
+    showStudentID(id);
 
     return 0;
 }

@@ -70,6 +70,18 @@ void findMostExpensiveFlower(const Flower flowers[], int n) {
     cout << "\nMost expensive flower : " << flowers[maxIdx].name 
          << " (" << fixed << setprecision(1) << flowers[maxIdx].price << ")\n";
 }
+// 3. Find the cheapest flower
+void findCheapestFlower(const Flower flowers[], int n) {
+    if (n <= 0) return;
+    int minIdx = 0;
+    for (int i = 1; i < n; i++) {
+        if (flowers[i].price < flowers[minIdx].price) {
+            minIdx = i;
+        }
+    }
+    cout << "Cheapest flower       : " << flowers[minIdx].name 
+         << " (" << fixed << setprecision(1) << flowers[minIdx].price << ")\n";
+}
 
 int main() {
     Flower flowers[20];
@@ -78,6 +90,7 @@ int main() {
     inputFlowers(flowers, n);
     displayAllFlowers(flowers, n);
     findMostExpensiveFlower(flowers, n);
+    findCheapestFlower(flowers, n);
 
     return 0;
 }

@@ -82,6 +82,18 @@ void findCheapestFlower(const Flower flowers[], int n) {
     cout << "Cheapest flower       : " << flowers[minIdx].name 
          << " (" << fixed << setprecision(1) << flowers[minIdx].price << ")\n";
 }
+// 4. Find the flower with the largest quantity
+void findLargestQuantityFlower(const Flower flowers[], int n) {
+    if (n <= 0) return;
+    int maxQtyIdx = 0;
+    for (int i = 1; i < n; i++) {
+        if (flowers[i].quantity > flowers[maxQtyIdx].quantity) {
+            maxQtyIdx = i;
+        }
+    }
+    cout << "Largest quantity      : " << flowers[maxQtyIdx].name 
+         << " (" << flowers[maxQtyIdx].quantity << ")\n";
+}
 
 int main() {
     Flower flowers[20];
@@ -91,6 +103,7 @@ int main() {
     displayAllFlowers(flowers, n);
     findMostExpensiveFlower(flowers, n);
     findCheapestFlower(flowers, n);
+    findLargestQuantityFlower(flowers, n);
 
     return 0;
 }

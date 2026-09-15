@@ -12,6 +12,16 @@ int countExcellentStudents(const double scores[], int n) {
     }
     return count;
 }
+// 2. Count Students in a Score Range [a, b]
+int countStudentsInRange(const double scores[], int n, double minScore, double maxScore) {
+    int count = 0;
+    for (int i = 0; i < n; i++) {
+        if (scores[i] >= minScore && scores[i] <= maxScore) {
+            count++;
+        }
+    }
+    return count;
+}
 
 int main() {
     int n;
@@ -37,6 +47,16 @@ int main() {
     // --- Count Excellent Students ---
     int excellentCount = countExcellentStudents(scores, n);
     cout << "\nNumber of excellent students: " << excellentCount << "\n";
+
+    // --- Count Students in a Score Range [7.0, 9.0] ---
+    double minR, maxR;
+    cout << "\nEnter minimum score: ";
+    cin >> minR;
+    cout << "Enter maximum score: ";
+    cin >> maxR;
+
+    int rangeCount = countStudentsInRange(scores, n, minR, maxR);
+    cout << "Students in range: " << rangeCount << "\n";
 
     return 0;
 }

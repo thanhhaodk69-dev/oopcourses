@@ -171,6 +171,28 @@ void findAllFlowersOfGivenType(const Flower flowers[], int n) {
         cout << "No flowers found for type '" << targetType << "'.\n";
     }
 }
+// 9. Search by name
+void searchByName(const Flower flowers[], int n) {
+    string searchName;
+    cout << "\nEnter flower name to search: ";
+    getline(cin, searchName);
+
+    bool found = false;
+    for (int i = 0; i < n; i++) {
+        if (flowers[i].name == searchName) {
+            cout << "\nFound flower information:\n";
+            cout << "Name: " << flowers[i].name 
+                 << " | Price: " << fixed << setprecision(1) << flowers[i].price 
+                 << " | Quantity: " << flowers[i].quantity 
+                 << " | Type: " << flowers[i].type << "\n";
+            found = true;
+            break;
+        }
+    }
+    if (!found) {
+        cout << "Flower '" << searchName << "' not found.\n";
+    }
+}
 
 int main() {
     Flower flowers[20];
@@ -185,6 +207,7 @@ int main() {
     calculateAveragePrice(flowers, n);
     countFlowersByType(flowers, n);
     findAllFlowersOfGivenType(flowers, n);
+    searchByName(flowers, n);
 
     return 0;
 }

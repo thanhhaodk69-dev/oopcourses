@@ -193,6 +193,26 @@ void searchByName(const Flower flowers[], int n) {
         cout << "Flower '" << searchName << "' not found.\n";
     }
 }
+// 10. Check if a flower exists
+void checkFlowerExists(const Flower flowers[], int n) {
+    string checkName;
+    cout << "\nEnter name to check existence: ";
+    getline(cin, checkName);
+
+    bool exists = false;
+    for (int i = 0; i < n; i++) {
+        if (flowers[i].name == checkName) {
+            exists = true;
+            break;
+        }
+    }
+
+    if (exists) {
+        cout << "Does '" << checkName << "' exist? -> Yes\n";
+    } else {
+        cout << "Does '" << checkName << "' exist? -> No\n";
+    }
+}
 
 int main() {
     Flower flowers[20];
@@ -208,6 +228,7 @@ int main() {
     countFlowersByType(flowers, n);
     findAllFlowersOfGivenType(flowers, n);
     searchByName(flowers, n);
+    checkFlowerExists(flowers, n);
 
     return 0;
 }

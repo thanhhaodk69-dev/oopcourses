@@ -94,6 +94,14 @@ void findLargestQuantityFlower(const Flower flowers[], int n) {
     cout << "Largest quantity      : " << flowers[maxQtyIdx].name 
          << " (" << flowers[maxQtyIdx].quantity << ")\n";
 }
+// 5. Calculate total quantity
+void calculateTotalQuantity(const Flower flowers[], int n) {
+    int total = 0;
+    for (int i = 0; i < n; i++) {
+        total += flowers[i].quantity;
+    }
+    cout << "Total quantity        : " << total << "\n";
+}
 
 int main() {
     Flower flowers[20];
@@ -104,6 +112,7 @@ int main() {
     findMostExpensiveFlower(flowers, n);
     findCheapestFlower(flowers, n);
     findLargestQuantityFlower(flowers, n);
+    calculateTotalQuantity(flowers, n);
 
     return 0;
 }

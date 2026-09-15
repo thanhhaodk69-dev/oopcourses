@@ -38,6 +38,31 @@ void findStudentsAboveAverage(const double scores[], int n) {
         }
     }
 }
+// 4. Find the Second Highest Score 
+void findSecondHighestScore(const double scores[], int n) {
+    double maxScore = scores[0];
+    for (int i = 1; i < n; i++) {
+        if (scores[i] > maxScore) {
+            maxScore = scores[i];
+        }
+    }
+
+    double secondMax = -1;
+    for (int i = 0; i < n; i++) {
+        if (scores[i] < maxScore) {
+            if (secondMax == -1 || scores[i] > secondMax) {
+                secondMax = scores[i];
+            }
+        }
+    }
+
+    cout << "\nHighest score: " << maxScore << "\n";
+    if (secondMax != -1) {
+        cout << "Second highest score: " << secondMax << "\n";
+    } else {
+        cout << "All students have the same score.\n";
+    }
+}
 
 int main() {
     int n;
@@ -77,5 +102,7 @@ int main() {
     // --- Find Students Above Average --- (MỚI THÊM)
     findStudentsAboveAverage(scores, n);
 
+    // --- Find the Second Highest Score --- 
+    findSecondHighestScore(scores, n);
     return 0;
 }

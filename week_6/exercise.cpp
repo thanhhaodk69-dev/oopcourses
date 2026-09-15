@@ -80,6 +80,20 @@ void searchScore(const double scores[], int n) {
         cout << "No student found with score " << target << "\n";
     }
 }
+// 6. Count Score Frequency
+void countScoreFrequency(const double scores[], int n) {
+    double x;
+    cout << "\nEnter score to count frequency: ";
+    cin >> x;
+
+    int freq = 0;
+    for (int i = 0; i < n; i++) {
+        if (scores[i] == x) {
+            freq++;
+        }
+    }
+    cout << "Score " << x << " appears " << freq << " times.\n";
+}
 
 int main() {
     int n;
@@ -124,6 +138,9 @@ int main() {
 
     // --- Search for a Specific Score --- 
     searchScore(scores, n);
+
+    // --- Count Score Frequency ---
+    countScoreFrequency(scores, n);
     
     return 0;
 }

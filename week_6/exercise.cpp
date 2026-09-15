@@ -63,6 +63,23 @@ void findSecondHighestScore(const double scores[], int n) {
         cout << "All students have the same score.\n";
     }
 }
+void searchScore(const double scores[], int n) {
+    double target;
+    cout << "\nEnter score to search: ";
+    cin >> target;
+
+    cout << "Found at:\n";
+    bool foundAny = false;
+    for (int i = 0; i < n; i++) {
+        if (scores[i] == target) {
+            cout << "Student " << (i + 1) << "\n";
+            foundAny = true;
+        }
+    }
+    if (!foundAny) {
+        cout << "No student found with score " << target << "\n";
+    }
+}
 
 int main() {
     int n;
@@ -99,10 +116,14 @@ int main() {
     int rangeCount = countStudentsInRange(scores, n, minR, maxR);
     cout << "Students in range: " << rangeCount << "\n";
 
-    // --- Find Students Above Average --- (MỚI THÊM)
+    // --- Find Students Above Average --- 
     findStudentsAboveAverage(scores, n);
 
     // --- Find the Second Highest Score --- 
     findSecondHighestScore(scores, n);
+
+    // --- Search for a Specific Score --- 
+    searchScore(scores, n);
+    
     return 0;
 }

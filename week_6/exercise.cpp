@@ -120,6 +120,24 @@ void compareAdjacentStudents(const double scores[], int n) {
         }
     }
 }
+// 9. Find the Longest Pass Streak
+void findLongestPassStreak(const double scores[], int n) {
+    cout << "\nLONGEST PASS STREAK\n";
+    int maxStreak = 0;
+    int currentStreak = 0;
+
+    for (int i = 0; i < n; i++) {
+        if (scores[i] >= 5.0) {
+            currentStreak++;
+            if (currentStreak > maxStreak) {
+                maxStreak = currentStreak;
+            }
+        } else {
+            currentStreak = 0;
+        }
+    }
+    cout << "Longest pass streak: " << maxStreak << " students\n";
+}
 
 int main() {
     int n;
@@ -173,6 +191,9 @@ int main() {
 
     // --- Compare Adjacent Students ---
     compareAdjacentStudents(scores, n);
+
+    // --- Find the Longest Pass Streak ---
+    findLongestPassStreak(scores, n);
 
     return 0;
 }

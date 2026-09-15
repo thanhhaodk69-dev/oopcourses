@@ -112,6 +112,34 @@ void calculateAveragePrice(const Flower flowers[], int n) {
     double avg = sum / n;
     cout << "Average price         : " << fixed << setprecision(1) << avg << "\n";
 }
+// 7. Count flowers by type
+void countFlowersByType(const Flower flowers[], int n) {
+    cout << "\n=== COUNT FLOWERS BY TYPE ===\n";
+    string types[20];
+    int counts[20] = {0};
+    int typeCount = 0;
+
+    for (int i = 0; i < n; i++) {
+        int foundIdx = -1;
+        for (int j = 0; j < typeCount; j++) {
+            if (types[j] == flowers[i].type) {
+                foundIdx = j;
+                break;
+            }
+        }
+        if (foundIdx != -1) {
+            counts[foundIdx]++;
+        } else {
+            types[typeCount] = flowers[i].type;
+            counts[typeCount] = 1;
+            typeCount++;
+        }
+    }
+
+    for (int i = 0; i < typeCount; i++) {
+        cout << "Type '" << types[i] << "': " << counts[i] << " flower(s)\n";
+    }
+}
 
 int main() {
     Flower flowers[20];
@@ -124,6 +152,7 @@ int main() {
     findLargestQuantityFlower(flowers, n);
     calculateTotalQuantity(flowers, n);
     calculateAveragePrice(flowers, n);
-
+    countFlowersByType(flowers, n);
+    
     return 0;
 }

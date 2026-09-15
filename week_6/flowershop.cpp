@@ -58,6 +58,18 @@ void displayAllFlowers(const Flower flowers[], int n) {
              << setw(12) << flowers[i].type << "\n";
     }
 }
+// 2. Find the most expensive flower 
+void findMostExpensiveFlower(const Flower flowers[], int n) {
+    if (n <= 0) return;
+    int maxIdx = 0;
+    for (int i = 1; i < n; i++) {
+        if (flowers[i].price > flowers[maxIdx].price) {
+            maxIdx = i;
+        }
+    }
+    cout << "\nMost expensive flower : " << flowers[maxIdx].name 
+         << " (" << fixed << setprecision(1) << flowers[maxIdx].price << ")\n";
+}
 
 int main() {
     Flower flowers[20];
@@ -65,6 +77,7 @@ int main() {
 
     inputFlowers(flowers, n);
     displayAllFlowers(flowers, n);
+    findMostExpensiveFlower(flowers, n);
 
     return 0;
 }

@@ -22,6 +22,22 @@ int countStudentsInRange(const double scores[], int n, double minScore, double m
     }
     return count;
 }
+// 3. Find Students Above Average 
+void findStudentsAboveAverage(const double scores[], int n) {
+    double totalScore = 0;
+    for (int i = 0; i < n; i++) {
+        totalScore += scores[i];
+    }
+    double avgScore = totalScore / n;
+
+    cout << "\nAverage score: " << avgScore << "\n";
+    cout << "Students above average:\n";
+    for (int i = 0; i < n; i++) {
+        if (scores[i] > avgScore) {
+            cout << "Student " << (i + 1) << ": " << scores[i] << "\n";
+        }
+    }
+}
 
 int main() {
     int n;
@@ -57,6 +73,9 @@ int main() {
 
     int rangeCount = countStudentsInRange(scores, n, minR, maxR);
     cout << "Students in range: " << rangeCount << "\n";
+
+    // --- Find Students Above Average --- (MỚI THÊM)
+    findStudentsAboveAverage(scores, n);
 
     return 0;
 }

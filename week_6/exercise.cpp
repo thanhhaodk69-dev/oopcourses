@@ -111,6 +111,15 @@ void findFirstFailingStudent(const double scores[], int n) {
         cout << "All students pass!\n";
     }
 }
+// 8. Compare Adjacent Students
+void compareAdjacentStudents(const double scores[], int n) {
+    cout << "\nCOMPARE ADJACENT STUDENTS\n";
+    for (int i = 0; i < n - 1; i++) {
+        if (scores[i + 1] > scores[i]) {
+            cout << "Student " << (i + 2) << " improved compared to Student " << (i + 1) << "\n";
+        }
+    }
+}
 
 int main() {
     int n;
@@ -161,6 +170,9 @@ int main() {
 
     // --- Find First Failing Student ---
     findFirstFailingStudent(scores, n);
-    
+
+    // --- Compare Adjacent Students ---
+    compareAdjacentStudents(scores, n);
+
     return 0;
 }

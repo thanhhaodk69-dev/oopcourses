@@ -140,6 +140,37 @@ void countFlowersByType(const Flower flowers[], int n) {
         cout << "Type '" << types[i] << "': " << counts[i] << " flower(s)\n";
     }
 }
+// 8. Find all flowers of a given type (MỚI THÊM)
+void findAllFlowersOfGivenType(const Flower flowers[], int n) {
+    string targetType;
+    cout << "\nEnter type to search: ";
+    cin.ignore();
+    getline(cin, targetType);
+
+    cout << "\n=== FLOWERS OF TYPE: " << targetType << " ===\n";
+    cout << left << setw(4) << "No" 
+         << setw(16) << "Name" 
+         << setw(10) << "Price" 
+         << setw(8) << "Qty" 
+         << setw(12) << "Type" << "\n";
+    cout << "---------------------------------------------\n";
+
+    bool found = false;
+    int count = 1;
+    for (int i = 0; i < n; i++) {
+        if (flowers[i].type == targetType) {
+            cout << left << setw(4) << count++
+                 << setw(16) << flowers[i].name
+                 << setw(10) << fixed << setprecision(1) << flowers[i].price
+                 << setw(8) << flowers[i].quantity
+                 << setw(12) << flowers[i].type << "\n";
+            found = true;
+        }
+    }
+    if (!found) {
+        cout << "No flowers found for type '" << targetType << "'.\n";
+    }
+}
 
 int main() {
     Flower flowers[20];
@@ -153,6 +184,7 @@ int main() {
     calculateTotalQuantity(flowers, n);
     calculateAveragePrice(flowers, n);
     countFlowersByType(flowers, n);
-    
+    findAllFlowersOfGivenType(flowers, n);
+
     return 0;
 }

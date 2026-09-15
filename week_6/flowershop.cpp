@@ -102,6 +102,16 @@ void calculateTotalQuantity(const Flower flowers[], int n) {
     }
     cout << "Total quantity        : " << total << "\n";
 }
+// 6. Calculate average price (MỚI THÊM)
+void calculateAveragePrice(const Flower flowers[], int n) {
+    if (n <= 0) return;
+    double sum = 0;
+    for (int i = 0; i < n; i++) {
+        sum += flowers[i].price;
+    }
+    double avg = sum / n;
+    cout << "Average price         : " << fixed << setprecision(1) << avg << "\n";
+}
 
 int main() {
     Flower flowers[20];
@@ -113,6 +123,7 @@ int main() {
     findCheapestFlower(flowers, n);
     findLargestQuantityFlower(flowers, n);
     calculateTotalQuantity(flowers, n);
+    calculateAveragePrice(flowers, n);
 
     return 0;
 }

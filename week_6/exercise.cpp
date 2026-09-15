@@ -94,6 +94,23 @@ void countScoreFrequency(const double scores[], int n) {
     }
     cout << "Score " << x << " appears " << freq << " times.\n";
 }
+// 7. Find First Failing Student 
+void findFirstFailingStudent(const double scores[], int n) {
+    cout << "\nFIRST FAILING STUDENT\n";
+    int failIdx = -1;
+    for (int i = 0; i < n; i++) {
+        if (scores[i] < 5.0) {
+            failIdx = i;
+            break;
+        }
+    }
+
+    if (failIdx != -1) {
+        cout << "First failing student: Student " << (failIdx + 1) << ": " << scores[failIdx] << "\n";
+    } else {
+        cout << "All students pass!\n";
+    }
+}
 
 int main() {
     int n;
@@ -141,6 +158,9 @@ int main() {
 
     // --- Count Score Frequency ---
     countScoreFrequency(scores, n);
+
+    // --- Find First Failing Student ---
+    findFirstFailingStudent(scores, n);
     
     return 0;
 }

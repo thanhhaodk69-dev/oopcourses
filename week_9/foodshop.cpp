@@ -93,6 +93,42 @@ void displayFoods(Restaurant &restaurant) {
     }
 }
 
+// chức năng 4: tìm kiếm món ăn theo mã hoặc tên
+void searchFood(Restaurant &restaurant) {
+    int choice;
+    string keyword;
+
+    cout << "\n1. Tim theo ma mon\n";
+    cout << "2. Tim theo ten mon\n";
+    cout << "Nhap lua chon: ";
+    cin >> choice;
+    cin.ignore();
+
+    cout << "Nhap thong tin can tim: ";
+    getline(cin, keyword);
+
+    bool found = false;
+
+    for (int i = 0; i < restaurant.foodCount; i++) {
+        if ((choice == 1 && restaurant.foods[i].id == keyword) ||
+            (choice == 2 && restaurant.foods[i].name == keyword)) {
+
+            cout << "\nTim thay mon an:\n";
+            cout << "Ma mon: " << restaurant.foods[i].id << endl;
+            cout << "Ten mon: " << restaurant.foods[i].name << endl;
+            cout << "Don gia: " << restaurant.foods[i].price << endl;
+            cout << "So luong: " << restaurant.foods[i].quantity << endl;
+
+            found = true;
+        }
+    }
+
+    if (!found) {
+        cout << "Khong tim thay mon an!\n";
+    }
+}
+
+
 int main() {
     Restaurant restaurant;
 
@@ -101,9 +137,10 @@ int main() {
     // chức năng 2
     addFood(restaurant);
     addFood(restaurant);
-    addFood(restaurant);
     // chức năng 3
     displayFoods(restaurant);
+    // chức năng 4
+    searchFood(restaurant);
 
     return 0;
 }

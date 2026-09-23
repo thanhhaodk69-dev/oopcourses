@@ -222,6 +222,60 @@ void createOrder(Restaurant &restaurant) {
 
     cout << "Tao don hang thanh cong!\n";
 }
+// chức năng 7: kiểm tra món ăn có tồn tại và số lượng có đủ để đặt hàng hay không
+void checkOrder(Restaurant &restaurant) {
+    string orderId;
+
+    cout << "Nhap ma don hang can kiem tra: ";
+    getline(cin, orderId);
+
+    bool foundOrder = false;
+
+    for (int i = 0; i < restaurant.orderCount; i++) {
+        if (restaurant.orders[i].id == orderId) {
+            foundOrder = true;
+
+            string foodId = restaurant.orders[i].food.id;
+            int orderQuantity = restaurant.orders[i].quantity;
+
+            bool foundFood = false;
+
+            for (int j = 0; j < restaurant.foodCount; j++) {
+                if (restaurant.foods[j].id == foodId) {
+                    foundFood = true;
+
+                    if (restaurant.foods[j].quantity >= orderQuantity) {
+                        restaurant.foods[j].quantity -= orderQuantity;
+
+                        cout << "Mon an ton tai!\n";
+                        cout << "So luong trong kho du de dat hang.\n";
+                        cout << "So luong con lai: "
+                             << restaurant.foods[j].quantity << endl;
+
+                        restaurant.orders[i].status = "Da xac nhan";
+                    }
+                    else {
+                        cout << "Khong du so luong mon an!\n";
+                        cout << "So luong hien co: "
+                             << restaurant.foods[j].quantity << endl;
+                    }
+
+                    break;
+                }
+            }
+
+            if (!foundFood) {
+                cout << "Mon an khong ton tai!\n";
+            }
+
+            break;
+        }
+    }
+
+    if (!foundOrder) {
+        cout << "Khong tim thay don hang!\n";
+    }
+}
 
 int main() {
     Restaurant restaurant;
@@ -239,6 +293,8 @@ int main() {
     updateFood(restaurant);
     // chức năng 6
     createOrder(restaurant);
+    // chức năng 7
+    checkOrder(restaurant);
 
     return 0;
 }

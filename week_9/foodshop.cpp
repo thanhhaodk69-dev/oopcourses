@@ -330,6 +330,38 @@ void calculateOrderTotal(Restaurant &restaurant) {
     }
 }
 
+// chức năng 9: hiển thị danh sách đơn hàng
+void displayOrders(Restaurant &restaurant) {
+    if (restaurant.orderCount == 0) {
+        cout << "Chua co don hang nao!\n";
+        return;
+    }
+
+    cout << "\nDanh sach don hang:\n";
+
+    for (int i = 0; i < restaurant.orderCount; i++) {
+        cout << "Ma don hang: "
+             << restaurant.orders[i].id << endl;
+
+        cout << "Ten khach hang: "
+             << restaurant.orders[i].customerName << endl;
+
+        cout << "Dia chi: "
+             << restaurant.orders[i].address << endl;
+
+        cout << "Ma mon: "
+             << restaurant.orders[i].food.id << endl;
+
+        cout << "So luong: "
+             << restaurant.orders[i].quantity << endl;
+
+        cout << "Trang thai: "
+             << restaurant.orders[i].status << endl;
+
+        cout << endl;
+    }
+}
+
 int main() {
     Restaurant restaurant;
 
@@ -350,6 +382,8 @@ int main() {
     checkOrder(restaurant);
     // chức năng 8
     calculateOrderTotal(restaurant);
+    // chức năng 9
+    displayOrders(restaurant);
 
     return 0;
 }

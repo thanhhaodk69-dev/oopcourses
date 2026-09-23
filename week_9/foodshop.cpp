@@ -276,6 +276,59 @@ void checkOrder(Restaurant &restaurant) {
         cout << "Khong tim thay don hang!\n";
     }
 }
+// chức năng 8: tính tổng tiền của đơn hàng
+void calculateOrderTotal(Restaurant &restaurant) {
+    string orderId;
+
+    cout << "Nhap ma don hang: ";
+    getline(cin, orderId);
+
+    bool foundOrder = false;
+
+    for (int i = 0; i < restaurant.orderCount; i++) {
+        if (restaurant.orders[i].id == orderId) {
+            foundOrder = true;
+
+            string foodId = restaurant.orders[i].food.id;
+            int orderQuantity = restaurant.orders[i].quantity;
+
+            bool foundFood = false;
+
+            for (int j = 0; j < restaurant.foodCount; j++) {
+                if (restaurant.foods[j].id == foodId) {
+                    foundFood = true;
+
+                    double total = restaurant.foods[j].price * orderQuantity;
+
+                    cout << "\nThong tin don hang:\n";
+                    cout << "Ma don hang: " << restaurant.orders[i].id << endl;
+                    cout << "Ten khach hang: "
+                         << restaurant.orders[i].customerName << endl;
+                    cout << "Ten mon: "
+                         << restaurant.foods[j].name << endl;
+                    cout << "Don gia: "
+                         << restaurant.foods[j].price << endl;
+                    cout << "So luong: "
+                         << orderQuantity << endl;
+                    cout << "Tong tien: "
+                         << total << endl;
+
+                    break;
+                }
+            }
+
+            if (!foundFood) {
+                cout << "Mon an khong ton tai!\n";
+            }
+
+            break;
+        }
+    }
+
+    if (!foundOrder) {
+        cout << "Khong tim thay don hang!\n";
+    }
+}
 
 int main() {
     Restaurant restaurant;
@@ -295,6 +348,8 @@ int main() {
     createOrder(restaurant);
     // chức năng 7
     checkOrder(restaurant);
+    // chức năng 8
+    calculateOrderTotal(restaurant);
 
     return 0;
 }

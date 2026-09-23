@@ -73,14 +73,24 @@ void addFood(Restaurant &restaurant) {
     restaurant.foodCount++;
 
     cout << "Them mon an thanh cong!\n";
+}
 
-    cout << "\nMon an vua them:\n";
-    cout << "Ma mon: " << food.id << endl;
-    cout << "Ten mon: " << food.name << endl;
-    cout << "Don gia: " << food.price << endl;
-    cout << "So luong: " << food.quantity << endl;
+// chức năng 3: hiển thị danh sách món ăn
+void displayFoods(Restaurant &restaurant) {
+    if (restaurant.foodCount == 0) {
+        cout << "Chua co mon an nao!\n";
+        return;
+    }
 
-    cout << "Them mon an thanh cong!\n";
+    cout << "\nDanh sach mon an:\n";
+
+    for (int i = 0; i < restaurant.foodCount; i++) {
+        cout << "Ma mon: " << restaurant.foods[i].id << endl;
+        cout << "Ten mon: " << restaurant.foods[i].name << endl;
+        cout << "Don gia: " << restaurant.foods[i].price << endl;
+        cout << "So luong: " << restaurant.foods[i].quantity << endl;
+        cout << endl;
+    }
 }
 
 int main() {
@@ -90,6 +100,10 @@ int main() {
     inputRestaurantInfo(restaurant);
     // chức năng 2
     addFood(restaurant);
+    addFood(restaurant);
+    addFood(restaurant);
+    // chức năng 3
+    displayFoods(restaurant);
 
     return 0;
 }

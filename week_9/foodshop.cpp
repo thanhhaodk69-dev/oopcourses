@@ -128,6 +128,63 @@ void searchFood(Restaurant &restaurant) {
     }
 }
 
+// chức năng 5: cập nhật giá và thông tin món ăn
+void updateFood(Restaurant &restaurant) {
+    string id;
+    int choice;
+
+    cout << "Nhap ma mon can cap nhat: ";
+    getline(cin, id);
+
+    bool found = false;
+
+    for (int i = 0; i < restaurant.foodCount; i++) {
+        if (restaurant.foods[i].id == id) {
+            found = true;
+
+            cout << "\nMon an hien tai:\n";
+            cout << "Ma mon: " << restaurant.foods[i].id << endl;
+            cout << "Ten mon: " << restaurant.foods[i].name << endl;
+            cout << "Don gia: " << restaurant.foods[i].price << endl;
+            cout << "So luong: " << restaurant.foods[i].quantity << endl;
+
+            cout << "\n1. Cap nhat gia\n";
+            cout << "2. Cap nhat so luong\n";
+            cout << "Nhap lua chon: ";
+            cin >> choice;
+
+            if (choice == 1) {
+                cout << "Nhap gia moi: ";
+                cin >> restaurant.foods[i].price;
+
+                cout << "Cap nhat gia thanh cong!\n";
+            }
+            else if (choice == 2) {
+                cout << "Nhap so luong moi: ";
+                cin >> restaurant.foods[i].quantity;
+
+                cout << "Cap nhat so luong thanh cong!\n";
+            }
+            else {
+                cout << "Lua chon khong hop le!\n";
+            }
+
+            cin.ignore();
+
+            cout << "\nThong tin mon an sau khi cap nhat:\n";
+            cout << "Ma mon: " << restaurant.foods[i].id << endl;
+            cout << "Ten mon: " << restaurant.foods[i].name << endl;
+            cout << "Don gia: " << restaurant.foods[i].price << endl;
+            cout << "So luong: " << restaurant.foods[i].quantity << endl;
+
+            break;
+        }
+    }
+
+    if (!found) {
+        cout << "Khong tim thay mon an!\n";
+    }
+}
 
 int main() {
     Restaurant restaurant;
@@ -141,6 +198,8 @@ int main() {
     displayFoods(restaurant);
     // chức năng 4
     searchFood(restaurant);
+    // chức năng 5
+    updateFood(restaurant);
 
     return 0;
 }

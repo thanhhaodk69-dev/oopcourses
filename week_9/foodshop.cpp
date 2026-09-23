@@ -34,7 +34,7 @@ struct Restaurant {
     int orderCount;
 };
 
-// chuc nang 1: nhap thong tin cua hang
+// chức năng 1: nhập thông tin nhà hàng
 void inputRestaurantInfo(Restaurant &restaurant) {
     cout << "Nhap ten cua hang: ";
     getline(cin, restaurant.name);
@@ -51,16 +51,45 @@ void inputRestaurantInfo(Restaurant &restaurant) {
     cout << "Da nhap thong tin cua hang thanh cong!\n";
 }
 
+// chức năng 2: thêm món ăn vào danh sách thực đơn
+void addFood(Restaurant &restaurant) {
+    Food food;
+
+    cout << "Nhap ma mon: ";
+    getline(cin, food.id);
+
+    cout << "Nhap ten mon: ";
+    getline(cin, food.name);
+
+    cout << "Nhap don gia: ";
+    cin >> food.price;
+
+    cout << "Nhap so luong: ";
+    cin >> food.quantity;
+
+    cin.ignore();
+
+    restaurant.foods[restaurant.foodCount] = food;
+    restaurant.foodCount++;
+
+    cout << "Them mon an thanh cong!\n";
+
+    cout << "\nMon an vua them:\n";
+    cout << "Ma mon: " << food.id << endl;
+    cout << "Ten mon: " << food.name << endl;
+    cout << "Don gia: " << food.price << endl;
+    cout << "So luong: " << food.quantity << endl;
+
+    cout << "Them mon an thanh cong!\n";
+}
+
 int main() {
     Restaurant restaurant;
 
-    // chuc nang 1
+    // chức năng 1
     inputRestaurantInfo(restaurant);
-
-    cout << "\nThong tin cua hang:\n";
-    cout << "Ten cua hang: " << restaurant.name << endl;
-    cout << "Dia chi: " << restaurant.address << endl;
-    cout << "So dien thoai: " << restaurant.phone << endl;
+    // chức năng 2
+    addFood(restaurant);
 
     return 0;
 }

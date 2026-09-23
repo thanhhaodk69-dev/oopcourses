@@ -362,6 +362,46 @@ void displayOrders(Restaurant &restaurant) {
     }
 }
 
+//chức năng 10: tìm kiếm đơn hàng theo mã
+void searchOrder(Restaurant &restaurant) {
+    string orderId;
+
+    cout << "Nhap ma don hang can tim: ";
+    getline(cin, orderId);
+
+    bool found = false;
+
+    for (int i = 0; i < restaurant.orderCount; i++) {
+        if (restaurant.orders[i].id == orderId) {
+            cout << "\nTim thay don hang:\n";
+            cout << "Ma don hang: "
+                 << restaurant.orders[i].id << endl;
+
+            cout << "Ten khach hang: "
+                 << restaurant.orders[i].customerName << endl;
+
+            cout << "Dia chi: "
+                 << restaurant.orders[i].address << endl;
+
+            cout << "Ma mon: "
+                 << restaurant.orders[i].food.id << endl;
+
+            cout << "So luong: "
+                 << restaurant.orders[i].quantity << endl;
+
+            cout << "Trang thai: "
+                 << restaurant.orders[i].status << endl;
+
+            found = true;
+            break;
+        }
+    }
+
+    if (!found) {
+        cout << "Khong tim thay don hang!\n";
+    }
+}
+
 int main() {
     Restaurant restaurant;
 
@@ -384,6 +424,8 @@ int main() {
     calculateOrderTotal(restaurant);
     // chức năng 9
     displayOrders(restaurant);
+    // chức năng 10
+    searchOrder(restaurant);
 
     return 0;
 }

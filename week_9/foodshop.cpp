@@ -186,6 +186,43 @@ void updateFood(Restaurant &restaurant) {
     }
 }
 
+// chức năng 6: tạo đơn hàng
+void createOrder(Restaurant &restaurant) {
+    Order order;
+
+    cout << "Nhap ma don hang: ";
+    getline(cin, order.id);
+
+    cout << "Nhap ten khach hang: ";
+    getline(cin, order.customerName);
+
+    cout << "Nhap dia chi: ";
+    getline(cin, order.address);
+
+    cout << "Nhap ma mon: ";
+    getline(cin, order.food.id);
+
+    cout << "Nhap so luong: ";
+    cin >> order.quantity;
+
+    cin.ignore();
+
+    order.status = "Cho xu ly";
+
+    restaurant.orders[restaurant.orderCount] = order;
+    restaurant.orderCount++;
+
+    cout << "\nDon hang vua tao:\n";
+    cout << "Ma don hang: " << order.id << endl;
+    cout << "Ten khach hang: " << order.customerName << endl;
+    cout << "Dia chi: " << order.address << endl;
+    cout << "Ma mon: " << order.food.id << endl;
+    cout << "So luong: " << order.quantity << endl;
+    cout << "Trang thai: " << order.status << endl;
+
+    cout << "Tao don hang thanh cong!\n";
+}
+
 int main() {
     Restaurant restaurant;
 
@@ -200,6 +237,8 @@ int main() {
     searchFood(restaurant);
     // chức năng 5
     updateFood(restaurant);
+    // chức năng 6
+    createOrder(restaurant);
 
     return 0;
 }

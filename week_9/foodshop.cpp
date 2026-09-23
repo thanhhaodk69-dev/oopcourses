@@ -402,6 +402,64 @@ void searchOrder(Restaurant &restaurant) {
     }
 }
 
+// Chức năng 11: cập nhật trạng thái đơn hàng
+void updateOrderStatus(Restaurant &restaurant) {
+    string orderId;
+    int choice;
+
+    cout << "Nhap ma don hang can cap nhat: ";
+    getline(cin, orderId);
+
+    bool found = false;
+
+    for (int i = 0; i < restaurant.orderCount; i++) {
+        if (restaurant.orders[i].id == orderId) {
+            found = true;
+
+            cout << "\nTrang thai hien tai: "
+                 << restaurant.orders[i].status << endl;
+
+            cout << "\n1. Cho xu ly\n";
+            cout << "2. Dang giao\n";
+            cout << "3. Da giao\n";
+            cout << "4. Da huy\n";
+            cout << "Nhap lua chon: ";
+            cin >> choice;
+
+            cin.ignore();
+
+            if (choice == 1) {
+                restaurant.orders[i].status = "Cho xu ly";
+            }
+            else if (choice == 2) {
+                restaurant.orders[i].status = "Dang giao";
+            }
+            else if (choice == 3) {
+                restaurant.orders[i].status = "Da giao";
+            }
+            else if (choice == 4) {
+                restaurant.orders[i].status = "Da huy";
+            }
+            else {
+                cout << "Lua chon khong hop le!\n";
+                return;
+            }
+
+            cout << "\nCap nhat trang thai thanh cong!\n";
+            cout << "Ma don hang: "
+                 << restaurant.orders[i].id << endl;
+            cout << "Trang thai moi: "
+                 << restaurant.orders[i].status << endl;
+
+            break;
+        }
+    }
+
+    if (!found) {
+        cout << "Khong tim thay don hang!\n";
+    }
+}
+
 int main() {
     Restaurant restaurant;
 
@@ -426,6 +484,8 @@ int main() {
     displayOrders(restaurant);
     // chức năng 10
     searchOrder(restaurant);
+    // chức năng 11
+    updateOrderStatus(restaurant);
 
     return 0;
 }

@@ -460,12 +460,37 @@ void updateOrderStatus(Restaurant &restaurant) {
     }
 }
 
+// chức năng 12: tính tổng doanh thu của nhà hàng
+void calculateRevenue(Restaurant &restaurant) {
+    double totalRevenue = 0;
+
+    for (int i = 0; i < restaurant.orderCount; i++) {
+        if (restaurant.orders[i].status == "Da giao") {
+            string foodId = restaurant.orders[i].food.id;
+
+            for (int j = 0; j < restaurant.foodCount; j++) {
+                if (restaurant.foods[j].id == foodId) {
+                    double total = restaurant.foods[j].price
+                                 * restaurant.orders[i].quantity;
+
+                    totalRevenue += total;
+                    break;
+                }
+            }
+        }
+    }
+
+    cout << "\nTong doanh thu: "
+         << totalRevenue << endl;
+}
+
 int main() {
     Restaurant restaurant;
 
     // chức năng 1
     inputRestaurantInfo(restaurant);
     // chức năng 2
+    addFood(restaurant);
     addFood(restaurant);
     addFood(restaurant);
     // chức năng 3
@@ -486,6 +511,8 @@ int main() {
     searchOrder(restaurant);
     // chức năng 11
     updateOrderStatus(restaurant);
+    // chức năng 12
+    calculateRevenue(restaurant);
 
     return 0;
 }

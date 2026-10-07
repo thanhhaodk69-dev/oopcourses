@@ -1,7 +1,9 @@
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
+
 
 // Class Date
 class Date
@@ -31,13 +33,13 @@ public:
 class Student
 {
 private:
-    // Properties - thuộc tính của Student
     string name;
     string address;
     Date birthdate;
     string cccd;
 
 public:
+
     // Constructor 0 tham số
     Student()
     {
@@ -46,6 +48,7 @@ public:
         this->birthdate = Date();
         this->cccd = "";
     }
+
 
     // Constructor 1 tham số
     Student(string name)
@@ -56,6 +59,7 @@ public:
         this->cccd = "";
     }
 
+
     // Constructor 2 tham số
     Student(string name, string address)
     {
@@ -65,6 +69,7 @@ public:
         this->cccd = "";
     }
 
+
     // Constructor 3 tham số
     Student(string name, string address, Date birthdate)
     {
@@ -73,6 +78,7 @@ public:
         this->birthdate = birthdate;
         this->cccd = "";
     }
+
 
     // Constructor 4 tham số
     Student(string name, string address, Date birthdate, string cccd)
@@ -84,7 +90,7 @@ public:
     }
 
 
-    // Nhập thông tin Student
+    // Nhập thông tin
     void input()
     {
         cout << "Nhap ten: ";
@@ -108,19 +114,20 @@ public:
         getline(cin, this->cccd);
     }
 
-
-    // Hiển thị thông tin Student
     void display()
     {
         cout << "Name: " << this->name << endl;
-        cout << "Address: " << this->address << endl;
+
+        cout << "Address: "
+             << this->address << endl;
 
         cout << "Birthdate: "
              << this->birthdate.day << "/"
              << this->birthdate.month << "/"
              << this->birthdate.year << endl;
 
-        cout << "CCCD: " << this->cccd << endl;
+        cout << "CCCD: "
+             << this->cccd << endl;
     }
 
 
@@ -138,102 +145,111 @@ public:
     }
 
 
-    // Thống kê theo năm sinh
-    static void statisticByBirthYear(Student students[], int n, int year)
+    // Lấy danh sách sinh viên theo năm sinh
+    static vector<Student> getStudentbyYear(
+        int year,
+        vector<Student> students)
     {
-        int count = 0;
+        vector<Student> result;
 
-        cout << "\n===== SINH VIEN SINH NAM "
-             << year << " =====" << endl;
-
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < students.size(); i++)
         {
             if (students[i].getBirthYear() == year)
             {
-                students[i].display();
-                cout << endl;
-                count++;
+                result.push_back(students[i]);
             }
         }
 
-        cout << "So luong sinh vien sinh nam "
-             << year << ": " << count << endl;
+        return result;
     }
 
 
-    // Thống kê theo tỉnh
-    static void statisticByProvince(
-        Student students[],
-        int n,
-        string province)
+    // Lấy danh sách sinh viên theo tỉnh
+    static vector<Student> getStudentbyProvince(
+        string province,
+        vector<Student> students)
     {
-        int count = 0;
+        vector<Student> result;
 
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < students.size(); i++)
         {
             if (students[i].getAddress() == province)
             {
-                count++;
+                result.push_back(students[i]);
             }
         }
 
-        cout << province << ": "
-             << count << " sinh vien" << endl;
+        return result;
     }
 };
 
 
+// Hàm display danh sách
+void display(vector<Student> students)
+{
+    for (int i = 0; i < students.size(); i++)
+    {
+        cout << "\n===== STUDENT "
+             << i + 1
+             << " =====" << endl;
+
+        students[i].display();
+    }
+}
+
 int main()
 {
-    // Nhập số lượng sinh viên
     int n;
 
+    // Nhập số lượng sinh viên
     cout << "Nhap so luong sinh vien: ";
     cin >> n;
-
     cin.ignore();
+    // Tạo vector chứa danh sách sinh viên
+    vector<Student> students;
 
-
-    // Tạo danh sách sinh viên
-    Student students[100];
-
-
-    // Nhập thông tin từng sinh viên
+    // NHẬP DANH SÁCH SINH VIÊN
     for (int i = 0; i < n; i++)
     {
         cout << "\n===== NHAP SINH VIEN "
              << i + 1 << " =====" << endl;
 
-        students[i].input();
+        Student student;
+
+        student.input();
+
+        students.push_back(student);
     }
 
-
-    // Hiển thị danh sách sinh viên
+    // HIỂN THỊ DANH SÁCH SINH VIÊN
     cout << "\n\n===== DANH SACH SINH VIEN ====="
          << endl;
 
-    for (int i = 0; i < n; i++)
-    {
-        cout << "\nStudent " << i + 1 << endl;
+    display(students);
 
-        students[i].display();
-    }
-
-
-    // Nhập năm muốn thống kê
+    // THỐNG KÊ THEO NĂM SINH
     int year;
 
     cout << "\nNhap nam sinh can thong ke: ";
     cin >> year;
 
-    Student::statisticByBirthYear(
-        students,
-        n,
-        year
+
+    vector<Student> s;
+
+    s = Student::getStudentbyYear(
+        year,
+        students
     );
 
+    cout << "\n===== SINH VIEN SINH NAM "
+         << year << " =====" << endl;
 
-    // Nhập tỉnh muốn thống kê
+    cout << "So luong: "
+         << s.size() << endl;
+
+    display(s);
+
+    // THỐNG KÊ THEO TỈNH
     string province;
 
     cin.ignore();
@@ -242,15 +258,23 @@ int main()
     getline(cin, province);
 
 
+    s = Student::getStudentbyProvince(
+        province,
+        students
+    );
+
+
     cout << "\n===== THONG KE THEO TINH ====="
          << endl;
 
-    Student::statisticByProvince(
-        students,
-        n,
-        province
-    );
+    cout << "Tinh: " << province << endl;
+
+    cout << "So luong sinh vien: "
+         << s.size() << endl;
+
+    display(s);
 
 
     return 0;
 }
+

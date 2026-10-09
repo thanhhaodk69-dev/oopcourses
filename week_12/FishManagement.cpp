@@ -203,6 +203,58 @@ private:
     Category categories[4];
     Fish fishes[40];
 
+    public:
+    // Getter
+    int getId() {
+        return id;
+    }
+
+    string getName() {
+        return name;
+    }
+
+    string getAddress() {
+        return address;
+    }
+
+    string getOwner() {
+        return owner;
+    }
+
+    string getStartdate() {
+        return startdate;
+    }
+
+    // Setter
+    void setId(int id) {
+        this->id = id;
+    }
+
+    void setName(string name) {
+        this->name = name;
+    }
+
+    void setAddress(string address) {
+        this->address = address;
+    }
+
+    void setOwner(string owner) {
+        this->owner = owner;
+    }
+
+    void setStartdate(string startdate) {
+        this->startdate = startdate;
+    }
+
+    // Hiển thị thông tin FishShop
+    void displayInfo() {
+        cout << "\n===== FISH SHOP INFORMATION =====" << endl;
+        cout << "Shop ID: " << id << endl;
+        cout << "Shop Name: " << name << endl;
+        cout << "Address: " << address << endl;
+        cout << "Owner: " << owner << endl;
+        cout << "Start Date: " << startdate << endl;
+    }
 };
 
 int main() {

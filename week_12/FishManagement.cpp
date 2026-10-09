@@ -192,6 +192,19 @@ public:
     }
 };
 
+class FishShop {
+private:
+    int id;
+    string name;
+    string address;
+    string owner;
+    string startdate;
+
+    Category categories[4];
+    Fish fishes[40];
+
+};
+
 int main() {
      Category category1(1, "Goldfish",
                        "Goldfish and decorative goldfish");

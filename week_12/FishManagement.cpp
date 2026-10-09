@@ -9,6 +9,7 @@ private:
     string name;
     string color;
     string characteristic;
+    int categoryId;
 
 public:
 
@@ -18,6 +19,7 @@ public:
         name = "Unknown";
         color = "Unknown";
         characteristic = "Unknown";
+        categoryId = 0;
     }
 
     // Constructor 2: có 1 tham số
@@ -26,6 +28,7 @@ public:
         name = "Unknown";
         color = "Unknown";
         characteristic = "Unknown";
+        categoryId = 0;
     }
 
     // Constructor 3: có 2 tham số
@@ -34,6 +37,7 @@ public:
         this->name = name;
         color = "Unknown";
         characteristic = "Unknown";
+        categoryId = 0;
     }
 
     // Constructor 4: có 3 tham số
@@ -51,7 +55,17 @@ public:
         this->name = name;
         this->color = color;
         this->characteristic = characteristic;
+        categoryId = 0;
     }
+    // constructor 6: có 5 tham số
+    Fish(int id, string name, string color,
+     string characteristic, int categoryId) {
+    this->id = id;
+    this->name = name;
+    this->color = color;
+    this->characteristic = characteristic;
+    this->categoryId = categoryId;
+}
 
     // Getters
     int getId() {
@@ -87,6 +101,14 @@ public:
         this->characteristic = characteristic;
     }
 
+    int getCategoryId() {
+        return categoryId;
+    }
+
+    void setCategoryId(int categoryId) {
+        this->categoryId = categoryId;
+    }
+
     // Hiển thị thông tin cá
     void displayFishInfo() {
         cout << "ID: " << id << endl;
@@ -94,6 +116,7 @@ public:
         cout << "Color: " << color << endl;
         cout << "Characteristic: "
              << characteristic << endl;
+        cout << "Category ID: " << categoryId << endl;
         cout << "------------------------" << endl;
     }
 

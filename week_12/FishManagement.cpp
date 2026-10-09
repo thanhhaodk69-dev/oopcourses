@@ -130,6 +130,35 @@ int main() {
     Fish fish4(4, "Goldfish", "Orange");
     Fish fish5(5, "Guppy", "Blue",
                 "Small fish with colorful tail");
+    Fish fish6(6, "Koi", "Red and White",
+               "Colorful ornamental carp");
+
+    Fish fish7(7, "Angelfish", "Silver",
+               "Flat body and long fins");
+
+    Fish fish8(8, "Discus", "Blue",
+               "Round body");
+
+    Fish fish9(9, "Neon Tetra", "Blue",
+               "Small fish with bright stripes");
+
+    Fish fish10(10, "Molly", "Black",
+                "Active aquarium fish");
+
+    Fish fish11(11, "Platy", "Red",
+                "Peaceful small fish");
+
+    Fish fish12(12, "Oscar", "Black and Orange",
+                "Large freshwater fish");
+
+    Fish fish13(13, "Corydoras", "Brown",
+                "Bottom-dwelling fish");
+
+    Fish fish14(14, "White Cloud Minnow", "Silver",
+                "Small fish preferring cooler water");
+
+    Fish fish15(15, "Fancy Goldfish", "White",
+                "Decorative goldfish");
 
     // 2. Cập nhật thông tin cho các đối tượng
     fish1.setId(1);
@@ -155,6 +184,16 @@ int main() {
     fish3.displayFishInfo();
     fish4.displayFishInfo();
     fish5.displayFishInfo();
+    fish6.displayFishInfo();
+    fish7.displayFishInfo();
+    fish8.displayFishInfo();
+    fish9.displayFishInfo();
+    fish10.displayFishInfo();
+    fish11.displayFishInfo();
+    fish12.displayFishInfo();
+    fish13.displayFishInfo();
+    fish14.displayFishInfo();
+    fish15.displayFishInfo();
 
     // 4. ập nhật thông tin của fish3 bằng setters
     fish3.setName("Siamese Fighting Fish");
@@ -174,6 +213,142 @@ int main() {
     // 6. Hiển thị đối tượng sau khi cập nhật để xác nhận các thay đổi
     cout << "\n===== VERIFY CHANGES =====" << endl;
     fish3.displayFishInfo();
+
+    // 7. Question 6 - Group fish by color
+    
+    cout << "\n===== GROUP FISH BY COLOR =====" << endl;
+
+    // Check each fish
+    for (int i = 1; i <= 15; i++) {
+        string currentColor;
+
+        // Get the color of the current fish
+        switch (i) {
+        case 1: currentColor = fish1.getColor(); break;
+        case 2: currentColor = fish2.getColor(); break;
+        case 3: currentColor = fish3.getColor(); break;
+        case 4: currentColor = fish4.getColor(); break;
+        case 5: currentColor = fish5.getColor(); break;
+        case 6: currentColor = fish6.getColor(); break;
+        case 7: currentColor = fish7.getColor(); break;
+        case 8: currentColor = fish8.getColor(); break;
+        case 9: currentColor = fish9.getColor(); break;
+        case 10: currentColor = fish10.getColor(); break;
+        case 11: currentColor = fish11.getColor(); break;
+        case 12: currentColor = fish12.getColor(); break;
+        case 13: currentColor = fish13.getColor(); break;
+        case 14: currentColor = fish14.getColor(); break;
+        case 15: currentColor = fish15.getColor(); break;
+        }
+
+        bool colorAlreadyDisplayed = false;
+
+        // Check whether this color was displayed before
+        for (int j = 1; j < i; j++) {
+            string previousColor;
+
+            switch (j) {
+            case 1: previousColor = fish1.getColor(); break;
+            case 2: previousColor = fish2.getColor(); break;
+            case 3: previousColor = fish3.getColor(); break;
+            case 4: previousColor = fish4.getColor(); break;
+            case 5: previousColor = fish5.getColor(); break;
+            case 6: previousColor = fish6.getColor(); break;
+            case 7: previousColor = fish7.getColor(); break;
+            case 8: previousColor = fish8.getColor(); break;
+            case 9: previousColor = fish9.getColor(); break;
+            case 10: previousColor = fish10.getColor(); break;
+            case 11: previousColor = fish11.getColor(); break;
+            case 12: previousColor = fish12.getColor(); break;
+            case 13: previousColor = fish13.getColor(); break;
+            case 14: previousColor = fish14.getColor(); break;
+            case 15: previousColor = fish15.getColor(); break;
+            }
+
+            if (currentColor == previousColor) {
+                colorAlreadyDisplayed = true;
+                break;
+            }
+        }
+
+        // Display each color only once
+        if (!colorAlreadyDisplayed) {
+            cout << "\nColor: " << currentColor << endl;
+
+            // Find all fish with the same color
+            for (int j = 1; j <= 15; j++) {
+                string fishColor;
+                string fishName;
+
+                switch (j) {
+                case 1:
+                    fishColor = fish1.getColor();
+                    fishName = fish1.getName();
+                    break;
+                case 2:
+                    fishColor = fish2.getColor();
+                    fishName = fish2.getName();
+                    break;
+                case 3:
+                    fishColor = fish3.getColor();
+                    fishName = fish3.getName();
+                    break;
+                case 4:
+                    fishColor = fish4.getColor();
+                    fishName = fish4.getName();
+                    break;
+                case 5:
+                    fishColor = fish5.getColor();
+                    fishName = fish5.getName();
+                    break;
+                case 6:
+                    fishColor = fish6.getColor();
+                    fishName = fish6.getName();
+                    break;
+                case 7:
+                    fishColor = fish7.getColor();
+                    fishName = fish7.getName();
+                    break;
+                case 8:
+                    fishColor = fish8.getColor();
+                    fishName = fish8.getName();
+                    break;
+                case 9:
+                    fishColor = fish9.getColor();
+                    fishName = fish9.getName();
+                    break;
+                case 10:
+                    fishColor = fish10.getColor();
+                    fishName = fish10.getName();
+                    break;
+                case 11:
+                    fishColor = fish11.getColor();
+                    fishName = fish11.getName();
+                    break;
+                case 12:
+                    fishColor = fish12.getColor();
+                    fishName = fish12.getName();
+                    break;
+                case 13:
+                    fishColor = fish13.getColor();
+                    fishName = fish13.getName();
+                    break;
+                case 14:
+                    fishColor = fish14.getColor();
+                    fishName = fish14.getName();
+                    break;
+                case 15:
+                    fishColor = fish15.getColor();
+                    fishName = fish15.getName();
+                    break;
+                }
+
+                if (fishColor == currentColor) {
+                    cout << "  " << fishName << endl;
+                }
+            }
+        }
+    }
 
     return 0;
 }

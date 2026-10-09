@@ -11,4 +11,45 @@ private:
     string characteristic;
 
 public:
+
+    // Constructor 1: không có tham số
+    Fish() {
+        id = 0;
+        name = "Unknown";
+        color = "Unknown";
+        characteristic = "Unknown";
+    }
+
+    // Constructor 2: có 1 tham số
+    Fish(int id) {
+        this->id = id;
+        name = "Unknown";
+        color = "Unknown";
+        characteristic = "Unknown";
+    }
+
+    // Constructor 3: có 2 tham số
+    Fish(int id, string name) {
+        this->id = id;
+        this->name = name;
+        color = "Unknown";
+        characteristic = "Unknown";
+    }
+
+    // Constructor 4: có 3 tham số
+    Fish(int id, string name, string color) {
+        this->id = id;
+        this->name = name;
+        this->color = color;
+        characteristic = "Unknown";
+    }
+
+    // Constructor 5: có 4 tham số
+    Fish(int id, string name, string color,
+         string characteristic) {
+        this->id = id;
+        this->name = name;
+        this->color = color;
+        this->characteristic = characteristic;
+    }
 };

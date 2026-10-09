@@ -87,4 +87,14 @@ public:
         this->characteristic = characteristic;
     }
 
+    // Hiển thị thông tin cá
+    void displayFishInfo() {
+        cout << "ID: " << id << endl;
+        cout << "Name: " << name << endl;
+        cout << "Color: " << color << endl;
+        cout << "Characteristic: "
+             << characteristic << endl;
+        cout << "------------------------" << endl;
+    }
+
 };

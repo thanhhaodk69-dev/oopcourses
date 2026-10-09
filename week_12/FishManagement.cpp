@@ -52,4 +52,39 @@ public:
         this->color = color;
         this->characteristic = characteristic;
     }
+
+    // Getters
+    int getId() {
+        return id;
+    }
+
+    string getName() {
+        return name;
+    }
+
+    string getColor() {
+        return color;
+    }
+
+    string getCharacteristic() {
+        return characteristic;
+    }
+
+    // Setters
+    void setId(int id) {
+        this->id = id;
+    }
+
+    void setName(string name) {
+        this->name = name;
+    }
+
+    void setColor(string color) {
+        this->color = color;
+    }
+
+    void setCharacteristic(string characteristic) {
+        this->characteristic = characteristic;
+    }
+
 };

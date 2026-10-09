@@ -46,6 +46,7 @@ public:
         this->name = name;
         this->color = color;
         characteristic = "Unknown";
+        categoryId = 0;
     }
 
     // Constructor 5: có 4 tham số
@@ -122,7 +123,96 @@ public:
 
 };
 
+class Category {
+private:
+    int CategoryId;
+    string CategoryName;
+    string Description;
+
+public:
+    // Constructor không tham số
+    Category() {
+        CategoryId = 0;
+        CategoryName = "Unknown";
+        Description = "No description";
+    }
+
+    // Constructor có 1 tham số
+    Category(int CategoryId) {
+        this->CategoryId = CategoryId;
+        CategoryName = "Unknown";
+        Description = "No description";
+    }
+
+    // Constructor có 2 tham số
+    Category(int CategoryId, string CategoryName) {
+        this->CategoryId = CategoryId;
+        this->CategoryName = CategoryName;
+        Description = "No description";
+    }
+
+    // Constructor có 3 tham số
+    Category(int CategoryId, string CategoryName, string Description) {
+        this->CategoryId = CategoryId;
+        this->CategoryName = CategoryName;
+        this->Description = Description;
+    }
+
+    // Getter
+    int getCategoryId() {
+        return CategoryId;
+    }
+
+    string getCategoryName() {
+        return CategoryName;
+    }
+
+    string getDescription() {
+        return Description;
+    }
+
+    // Setter
+    void setCategoryId(int CategoryId) {
+        this->CategoryId = CategoryId;
+    }
+
+    void setCategoryName(string CategoryName) {
+        this->CategoryName = CategoryName;
+    }
+
+    void setDescription(string Description) {
+        this->Description = Description;
+    }
+
+    // Hiển thị thông tin Category
+    void displayCategoryInfo() {
+        cout << "Category ID: " << CategoryId << endl;
+        cout << "Category Name: " << CategoryName << endl;
+        cout << "Description: " << Description << endl;
+    }
+};
+
 int main() {
+     Category category1(1, "Goldfish",
+                       "Goldfish and decorative goldfish");
+
+    Category category2(2, "Tropical Fish",
+                       "Colorful tropical aquarium fish");
+
+    Category category3(3, "Freshwater Fish",
+                       "Fish living in freshwater");
+
+    // Display category information
+    cout << "\n===== CATEGORY INFORMATION =====" << endl;
+
+    category1.displayCategoryInfo();
+    cout << "------------------------" << endl;
+
+    category2.displayCategoryInfo();
+    cout << "------------------------" << endl;
+
+    category3.displayCategoryInfo();
+    cout << "------------------------" << endl;
     // 1. Tạo 5 đối tượng Fish với các constructor khác nhau
     Fish fish1;
     Fish fish2(2);
@@ -213,6 +303,27 @@ int main() {
     // 6. Hiển thị đối tượng sau khi cập nhật để xác nhận các thay đổi
     cout << "\n===== VERIFY CHANGES =====" << endl;
     fish3.displayFishInfo();
+
+    // Category 1: Goldfish
+    fish4.setCategoryId(1);
+    fish15.setCategoryId(1);
+
+    // Category 2: Tropical Fish
+    fish3.setCategoryId(2);
+    fish5.setCategoryId(2);
+    fish7.setCategoryId(2);
+    fish8.setCategoryId(2);
+    fish9.setCategoryId(2);
+    fish10.setCategoryId(2);
+    fish11.setCategoryId(2);
+    fish12.setCategoryId(2);
+
+    // Category 3: Freshwater Fish
+    fish1.setCategoryId(3);
+    fish2.setCategoryId(3);
+    fish6.setCategoryId(3);
+    fish13.setCategoryId(3);
+    fish14.setCategoryId(3);
 
     // 7. Question 6 - Group fish by color
     
@@ -350,5 +461,100 @@ int main() {
         }
     }
 
+    int selectedCategoryId;
+
+    cout << "\n===== SELECT A CATEGORY =====" << endl;
+    cout << "1. Goldfish" << endl;
+    cout << "2. Tropical Fish" << endl;
+    cout << "3. Freshwater Fish" << endl;
+    cout << "Enter category ID: ";
+    cin >> selectedCategoryId;
+
+    cout << "\n===== FISH IN SELECTED CATEGORY =====" << endl;
+
+    // Check the selected category
+    if (selectedCategoryId == category1.getCategoryId()) {
+        category1.displayCategoryInfo();
+    }
+    else if (selectedCategoryId == category2.getCategoryId()) {
+        category2.displayCategoryInfo();
+    }
+    else if (selectedCategoryId == category3.getCategoryId()) {
+        category3.displayCategoryInfo();
+    }
+    else {
+        cout << "Invalid category ID!" << endl;
+    }
+
+    // Display fish belonging to the selected category
+    if (selectedCategoryId >= 1 && selectedCategoryId <= 3) {
+        bool found = false;
+
+        // Check all 15 fish
+        if (fish1.getCategoryId() == selectedCategoryId) {
+            fish1.displayFishInfo();
+            found = true;
+        }
+        if (fish2.getCategoryId() == selectedCategoryId) {
+            fish2.displayFishInfo();
+            found = true;
+        }
+        if (fish3.getCategoryId() == selectedCategoryId) {
+            fish3.displayFishInfo();
+            found = true;
+        }
+        if (fish4.getCategoryId() == selectedCategoryId) {
+            fish4.displayFishInfo();
+            found = true;
+        }
+        if (fish5.getCategoryId() == selectedCategoryId) {
+            fish5.displayFishInfo();
+            found = true;
+        }
+        if (fish6.getCategoryId() == selectedCategoryId) {
+            fish6.displayFishInfo();
+            found = true;
+        }
+        if (fish7.getCategoryId() == selectedCategoryId) {
+            fish7.displayFishInfo();
+            found = true;
+        }
+        if (fish8.getCategoryId() == selectedCategoryId) {
+            fish8.displayFishInfo();
+            found = true;
+        }
+        if (fish9.getCategoryId() == selectedCategoryId) {
+            fish9.displayFishInfo();
+            found = true;
+        }
+        if (fish10.getCategoryId() == selectedCategoryId) {
+            fish10.displayFishInfo();
+            found = true;
+        }
+        if (fish11.getCategoryId() == selectedCategoryId) {
+            fish11.displayFishInfo();
+            found = true;
+        }
+        if (fish12.getCategoryId() == selectedCategoryId) {
+            fish12.displayFishInfo();
+            found = true;
+        }
+        if (fish13.getCategoryId() == selectedCategoryId) {
+            fish13.displayFishInfo();
+            found = true;
+        }
+        if (fish14.getCategoryId() == selectedCategoryId) {
+            fish14.displayFishInfo();
+            found = true;
+        }
+        if (fish15.getCategoryId() == selectedCategoryId) {
+            fish15.displayFishInfo();
+            found = true;
+        }
+
+        if (!found) {
+            cout << "No fish found in this category." << endl;
+        }
+    }
     return 0;
 }

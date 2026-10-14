@@ -32,6 +32,11 @@ public:
     void setCccd(string c) { cccd = c; }
     void setName(string n) { name = n; }
     void setAddress(string a) { address = a; }
+    void displayInfo() const {
+        cout << "CCCD: " << cccd << endl;
+        cout << "Name: " << name << endl;
+        cout << "Address: " << address << endl;
+    }
 };
 
 // 2. Class Student (kế thừa từ People)
@@ -59,6 +64,11 @@ public:
     int getYearEntrance() const { return yearEntrance; }
     void setMssv(string m) { mssv = m; }
     void setYearEntrance(int y) { yearEntrance = y; }
+    void displayInfo() const {
+        People::displayInfo(); // Gọi hàm hiển thị thông tin của lớp cha
+        cout << "MSSV: " << mssv << endl;
+        cout << "Year Entrance: " << yearEntrance << endl;
+    }
 };
 
 // 3. Class FIEStudent (kế thừa từ Student)
@@ -84,11 +94,7 @@ public:
 
     // Hàm hiển thị thông tin
     void displayInfo() const {
-        cout << "CCCD: " << getCccd() << endl;
-        cout << "Name: " << getName() << endl;
-        cout << "Address: " << getAddress() << endl;
-        cout << "MSSV: " << getMssv() << endl;
-        cout << "Year Entrance: " << getYearEntrance() << endl;
+        Student::displayInfo(); // Gọi hàm hiển thị thông tin của lớp cha
         cout << "Credits: " << credits << endl;
         cout << "----------------------------------" << endl;
     }

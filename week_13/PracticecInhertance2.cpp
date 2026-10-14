@@ -160,7 +160,7 @@ int main() {
     for (const auto& nv : dsNhanVien) {
         tongQuyLuong += nv->tinhLuong();
     }
-    cout << "\n[Bai 4] Tong quy luong cua cong ty: " << tongQuyLuong << " VND\n";
+    cout << "\n Tong quy luong cua cong ty: " << tongQuyLuong << " VND\n";
 
     // Bài 5: Tìm nhân viên lương cao nhất & thấp nhất
     if (!dsNhanVien.empty()) {
@@ -172,10 +172,10 @@ int main() {
             if (dsNhanVien[i]->tinhLuong() < minNV->tinhLuong()) minNV = dsNhanVien[i];
         }
 
-        cout << "\n[Bai 5] Nhan vien co LUONG CAO NHAT (" << maxNV->tinhLuong() << " VND):\n";
+        cout << "\n Nhan vien co LUONG CAO NHAT (" << maxNV->tinhLuong() << " VND):\n";
         maxNV->displayInfo();
 
-        cout << "\n[Bai 5] Nhan vien co LUONG THAP NHAT (" << minNV->tinhLuong() << " VND):\n";
+        cout << "\n Nhan vien co LUONG THAP NHAT (" << minNV->tinhLuong() << " VND):\n";
         minNV->displayInfo();
     }
 
@@ -185,12 +185,12 @@ int main() {
         if (nv->getType() == "HourlyEmployee") countHourly++;
         else if (nv->getType() == "MonthlyEmployee") countMonthly++;
     }
-    cout << "\n[Bai 6] So luong HourlyEmployee: " << countHourly << "\n";
-    cout << "[Bai 6] So luong MonthlyEmployee: " << countMonthly << "\n";
+    cout << "\n So luong HourlyEmployee: " << countHourly << "\n";
+    cout << " So luong MonthlyEmployee: " << countMonthly << "\n";
 
     // Bài 7: Tìm và hiển thị danh sách NV có lương > X
     double luongNguong;
-    cout << "\n[Bai 7] Nhap muc luong toi thieu can tim: ";
+    cout << "\n Nhap muc luong toi thieu can tim: ";
     cin >> luongNguong;
 
     cout << "---> Danh sach nhan vien co luong > " << luongNguong << " VND:\n";
@@ -216,7 +216,7 @@ int main() {
         }
     }
 
-    cout << "\n[Bai 8] DANH SACH NHAN VIEN SAU KHI SAP XEP GIAM DAN THEO LUONG:\n";
+    cout << "\n DANH SACH NHAN VIEN SAU KHI SAP XEP GIAM DAN THEO LUONG:\n";
     for (const auto& nv : dsNhanVien) {
         nv->displayInfo();
         cout << "-----------------------------------\n";

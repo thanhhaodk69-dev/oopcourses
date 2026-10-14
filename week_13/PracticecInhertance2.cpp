@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <algorithm>
 
 using namespace std;
 
@@ -11,12 +10,10 @@ protected:
     string cccd;
     string sdt;
     string address;
-
 public:
     Employee();
     Employee(string c, string s, string a);
-    
-    // Khai báo hàm ảo (virtual) để hỗ trợ tính đa hình cho bài tập mở rộng
+
     virtual ~Employee() {}
     virtual void displayInfo() const;
     virtual double tinhLuong() const { return 0.0; } 
@@ -40,8 +37,6 @@ private:
 public:
     HourlyEmployee();
     HourlyEmployee(string c, string s, string a, int soGio, double donGia);
-
-    // Mở rộng 1 & 2: Ghi đè hàm tinhLuong() và displayInfo()
     double tinhLuong() const override;
     void displayInfo() const override;
     string getType() const override { return "HourlyEmployee"; }
@@ -64,7 +59,6 @@ public:
     MonthlyEmployee();
     MonthlyEmployee(string c, string s, string a, double lcb, double pc, double hs);
 
-    // Mở rộng 1 & 2: Ghi đè hàm tinhLuong() và displayInfo()
     double tinhLuong() const override;
     void displayInfo() const override;
     string getType() const override { return "MonthlyEmployee"; }
@@ -79,7 +73,6 @@ public:
 };
 
 // ĐỊNH NGHĨA CÁC PHƯƠNG THỨC & CONSTRUCTOR
-
 // --- Employee ---
 Employee::Employee() { cccd = ""; sdt = ""; address = ""; }
 Employee::Employee(string c, string s, string a) : cccd(c), sdt(s), address(a) {}
@@ -102,12 +95,12 @@ HourlyEmployee::HourlyEmployee() : Employee(), soGioLamViec(0), donGia(0.0) {}
 HourlyEmployee::HourlyEmployee(string c, string s, string a, int soGio, double dg)
     : Employee(c, s, a), soGioLamViec(soGio), donGia(dg) {}
 
-// Bài mở rộng 1: Công thức tính lương HourlyEmployee
+// Bài 1: Công thức tính lương HourlyEmployee
 double HourlyEmployee::tinhLuong() const {
     return soGioLamViec * donGia;
 }
 
-// Bài mở rộng 2: Ghi đè displayInfo
+// Bài 2: Ghi đè displayInfo
 void HourlyEmployee::displayInfo() const {
     Employee::displayInfo();
     cout << "So gio lam viec: " << soGioLamViec << endl;
@@ -125,12 +118,12 @@ MonthlyEmployee::MonthlyEmployee() : Employee(), luongCoBan(0.0), phuCap(0.0), h
 MonthlyEmployee::MonthlyEmployee(string c, string s, string a, double lcb, double pc, double hs)
     : Employee(c, s, a), luongCoBan(lcb), phuCap(pc), heSoThuong(hs) {}
 
-// Bài mở rộng 1: Công thức tính lương MonthlyEmployee
+// Bài 1: Công thức tính lương MonthlyEmployee
 double MonthlyEmployee::tinhLuong() const {
     return luongCoBan + phuCap + (luongCoBan * heSoThuong);
 }
 
-// Bài mở rộng 2: Ghi đè displayInfo
+// Bài 2: Ghi đè displayInfo
 void MonthlyEmployee::displayInfo() const {
     Employee::displayInfo();
     cout << "Luong co ban: " << luongCoBan << endl;
@@ -146,13 +139,9 @@ void MonthlyEmployee::setLuongCoBan(double lcb) { luongCoBan = lcb; }
 void MonthlyEmployee::setPhuCap(double pc) { phuCap = pc; }
 void MonthlyEmployee::setHeSoThuong(double hs) { heSoThuong = hs; }
 
-
-// HÀM MAIN THỰC HIỆN CÁC BÀI TẬP MỞ RỘNG (MỤC 7)
-
-
 int main() {
-    // Bài mở rộng 3: Khởi tạo ít nhất 2 đối tượng mỗi loại
-    // Bài mở rộng 4: Tạo mảng hoặc vector<Employee*>
+    // Bài 3: Khởi tạo ít nhất 2 đối tượng mỗi loại
+    // Bài 4: Tạo mảng vector<Employee*>
     vector<Employee*> dsNhanVien;
 
     dsNhanVien.push_back(new HourlyEmployee("079876543210", "0901002003", "Ha Noi", 160, 50000));
@@ -166,14 +155,14 @@ int main() {
         cout << "-----------------------------------\n";
     }
 
-    // Bài mở rộng 4: Tính tổng quỹ lương
+    // Bài 4: Tính tổng quỹ lương
     double tongQuyLuong = 0;
     for (const auto& nv : dsNhanVien) {
         tongQuyLuong += nv->tinhLuong();
     }
     cout << "\n[Bai 4] Tong quy luong cua cong ty: " << tongQuyLuong << " VND\n";
 
-    // Bài mở rộng 5: Tìm nhân viên lương cao nhất & thấp nhất
+    // Bài 5: Tìm nhân viên lương cao nhất & thấp nhất
     if (!dsNhanVien.empty()) {
         Employee* maxNV = dsNhanVien[0];
         Employee* minNV = dsNhanVien[0];
@@ -190,7 +179,7 @@ int main() {
         minNV->displayInfo();
     }
 
-    // Bài mở rộng 6: Đếm số lượng nhân viên từng loại
+    // Bài 6: Đếm số lượng nhân viên từng loại
     int countHourly = 0, countMonthly = 0;
     for (const auto& nv : dsNhanVien) {
         if (nv->getType() == "HourlyEmployee") countHourly++;
@@ -199,7 +188,7 @@ int main() {
     cout << "\n[Bai 6] So luong HourlyEmployee: " << countHourly << "\n";
     cout << "[Bai 6] So luong MonthlyEmployee: " << countMonthly << "\n";
 
-    // Bài mở rộng 7: Tìm và hiển thị danh sách NV có lương > X
+    // Bài 7: Tìm và hiển thị danh sách NV có lương > X
     double luongNguong;
     cout << "\n[Bai 7] Nhap muc luong toi thieu can tim: ";
     cin >> luongNguong;
@@ -215,10 +204,17 @@ int main() {
     }
     if (!found) cout << "Khong co nhan vien nao dat muc luong nay.\n";
 
-    // Bài mở rộng 8: Sắp xếp danh sách nhân viên theo lương giảm dần
-    sort(dsNhanVien.begin(), dsNhanVien.end(), [](Employee* a, Employee* b) {
-        return a->tinhLuong() > b->tinhLuong();
-    });
+    // Bài 8: Sắp xếp giảm dần theo lương (Dùng Bubble Sort - Không dùng <algorithm>)
+    int n = dsNhanVien.size();
+    for (int i = 0; i < n - 1; ++i) {
+        for (int j = 0; j < n - i - 1; ++j) {
+            if (dsNhanVien[j]->tinhLuong() < dsNhanVien[j + 1]->tinhLuong()) {
+                Employee* temp = dsNhanVien[j];
+                dsNhanVien[j] = dsNhanVien[j + 1];
+                dsNhanVien[j + 1] = temp;
+            }
+        }
+    }
 
     cout << "\n[Bai 8] DANH SACH NHAN VIEN SAU KHI SAP XEP GIAM DAN THEO LUONG:\n";
     for (const auto& nv : dsNhanVien) {
@@ -226,7 +222,6 @@ int main() {
         cout << "-----------------------------------\n";
     }
 
-    // Giải phóng bộ nhớ
     for (auto nv : dsNhanVien) {
         delete nv;
     }

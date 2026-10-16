@@ -4,23 +4,29 @@
 
 using namespace std;
 
-class MenuItem {
+class Drink {
 protected:
     string name;
     double price;
 
 public:
-    MenuItem(string name, double price) : name(name), price(price) {}
+    Drink(string name, double price) : name(name), price(price) {}
 
     string getName() const { return name; }
     double getPrice() const { return price; }
 
-    virtual ~MenuItem() = default;
+    virtual string getCategory() const = 0;
+
+    virtual ~Drink() = default;
 };
 
-class Drinks : public MenuItem {
+class Drinks : public Drink {
 public:
-    Drinks(string name, double price) : MenuItem(name, price) {}
+    Drinks(string name, double price) : Drink(name, price) {}
+
+    string getCategory() const override {
+        return "Drinks";
+    }
 };
 
 class Coffee : public Drinks {
@@ -43,9 +49,13 @@ public:
     Juices(string name, double price) : Drinks(name, price) {}
 };
 
-class Foods : public MenuItem {
+class Foods : public Drink {
 public:
-    Foods(string name, double price) : MenuItem(name, price) {}
+    Foods(string name, double price) : Drink(name, price) {}
+
+    string getCategory() const override {
+        return "Foods";
+    }
 };
 
 class Cake : public Foods {
@@ -60,15 +70,15 @@ public:
 
 class OrderItem {
 private:
-    MenuItem* item;
+    Drink* item;
     int quantity;
     string date;
 
 public:
-    OrderItem(MenuItem* item, int quantity, string date)
+    OrderItem(Drink* item, int quantity, string date)
         : item(item), quantity(quantity), date(date) {}
 
-    MenuItem* getItem() const { return item; }
+    Drink* getItem() const { return item; }
     int getQuantity() const { return quantity; }
     string getDate() const { return date; }
 
@@ -83,10 +93,13 @@ void calculateDailyRevenue(const vector<OrderItem>& orders, const string& target
 
     for (const auto& order : orders) {
         if (order.getDate() == targetDate) {
-            if (dynamic_cast<Drinks*>(order.getItem())) {
+
+            string category = order.getItem()->getCategory();
+
+            if (category == "Drinks") {
                 totalDrinks += order.getTotalPrice();
-            }
-            else if (dynamic_cast<Foods*>(order.getItem())) {
+            } 
+            else if (category == "Foods") {
                 totalFoods += order.getTotalPrice();
             }
         }
@@ -104,7 +117,7 @@ int main() {
     Juices orangeJuice("Nuoc cam", 35000);
 
     Cake tiramisu("Banh Tiramisu", 50000);
-    Breads croissant("Banh Sừng Bò", 30000);
+    Breads croissant("Banh Sungs Bo", 30000);
 
     vector<OrderItem> orders = {
         OrderItem(&espresso, 2, "16/10/2026"),
